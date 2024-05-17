@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <script src="{% static 'js/item_list.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+    <h1>Food information</h1>
+    <div class="panel panel-default" style="margin-top: 10px">
+        <div class="panel-heading">food information</div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>name</th>
+                <th>image</th>
+                <th>use category</th>
+                <th>view detail</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for food in foods %}
+                <tr>
+                    <td>{{ food.name }}</td>
+                    <td>
+                        <img src="/image/{{ food.image }}" alt="" style="width: 120px;height: 90px">
+                    </td>
+                    <td>{{ food.category.name }}</td>
+                    <td>
+                        <button class="btn btn-prev btn-sm">
+                            <a href="/food_detail/{{ food.id }}">view detail</a>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

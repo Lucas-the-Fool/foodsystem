@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <script src="{% static 'js/my_like.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+    My Collection
+{% endblock %}
+
+{% block body %}
+    <h1>My Like</h1>
+    <div class="panel panel-default" style="margin-top: 10px">
+        <div class="panel-heading">My Like</div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Create time</th>
+                <th>Handle</th>
+                <th>View detail</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for like in likes %}
+                <tr>
+                    <td>
+                        <a href="/food_detail/{{ like.food.id }}">{{ like.food.name }}</a>
+                    </td>
+                    <td>
+                        <img src="/image/{{ like.food.image }}" alt="" style="width: 120px;height: 90px">
+                    </td>
+                    <td>{{ like.create_time }}</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger delete-like-btn" like-id="{{ like.id }}">Delete like</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-prev">
+                            <a href="/food_detail/{{ like.food.id }}">View detail</a>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+    <h1>Recommend</h1>
+    <div class="panel panel-default" style="margin-top: 10px">
+        <div class="panel-heading">Food recommend</div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>View detail</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in response_data %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>
+                        <img src="/image/{{ item.image }}" alt="" style="width: 120px;height: 90px">
+                    </td>
+                    <td>
+                        <a href="/food_detail/{{ item.id }}">
+                            <button class="btn btn-success btn-sm">View detail</button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

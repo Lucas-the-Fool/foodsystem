@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <script src="{% static 'js/check_page.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <h2>Image check：</h2>
+    <div class="" style="margin-top: 20px">
+        <label for="">Please select a picture</label>
+        <input type="file" id="image-input-tag">
+        <img src="" alt="" style="width: 400px;height: 300px;margin-top: 20px" id="image-src-tag">
+        <button class="btn btn-danger btn-sm right" id="upload-btn">Upload image</button>
+        <button class="btn btn-primary btn-sm right" style="margin-left: 20px" id="check-btn">Check</button>
+    </div>
+{% endblock %}

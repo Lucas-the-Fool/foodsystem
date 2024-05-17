@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+    My information
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/signbase.css' %}">
+    <script src="{% static 'js/my_info.js' %}"></script>
+{% endblock %}
+{% block body %}
+    <div class="outer-box">
+        <h2 class="page-title">
+            My information
+        </h2>
+        <div class="sign-box">
+            <div class="form-group">
+                <label for="">username：</label>
+                <input type="text" class="form-control" id="username" value="{{ info.username }}">
+            </div>
+            <div class="form-group">
+                <label for="">password：</label>
+                <input type="text" class="form-control" id="password" value="{{ info.password }}">
+            </div>
+            <div class="form-group">
+                <label for="">phone：</label>
+                <input type="text" class="form-control" id="phone" value="{{ info.phone }}">
+            </div>
+            <div class="form-group">
+                <label for="">address：</label>
+                <input type="text" class="form-control" id="address" value="{{ info.address }}">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-sm btn-primary" id="submit-btn">Submit information</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

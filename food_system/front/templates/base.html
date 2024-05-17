@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="csrf-token" content="">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/front_base.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block head %}
+
+    {% endblock %}
+    <title>
+        Deeper And Healthier
+        {% block title %}
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/signbase.css' %}">
+</head>
+
+<body>
+<nav class="navbar navbar-default" style="background-color: #101010">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Food Manage</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/">Index<span class="sr-only">(current)</span></a></li>
+                <li><a href="/admin/" target="_blank">Backstage Manage</a></li>
+                {% if front_user %}
+                    <li><a href="{% url 'info_manage:my_like' %}">My Like</a></li>
+                    <li><a href="{% url 'info_manage:my_info' %}">My Info</a></li>
+                    <li><a href="{% url 'info_manage:view_count' %}">View Top</a></li>
+                    <li><a href="{% url 'info_manage:check_page' %}">Image Check</a></li>
+                    <li><a href="/item_recommend/{{ front_user.user_id }}">Food Recommend</a></li>
+                {% endif %}
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if front_user %}
+                    <li><a href="">Hello：{{ front_user.username }}</a></li>
+                    <li><a href="{% url 'info_manage:logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'info_manage:login' %}">Sign</a></li>
+                    <li><a href="{% url 'info_manage:register' %}">register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="main-container">
+    {% block body %}
+
+    {% endblock %}
+</div>
+</body>
+
+</html>

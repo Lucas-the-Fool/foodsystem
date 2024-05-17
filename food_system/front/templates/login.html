@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/signbase.css' %}">
+    <script src="{% static 'js/login.js' %}"></script>
+{% endblock %}
+{% block body %}
+    <div class="outer-box">
+        <h2 class="page-title">
+            Login
+        </h2>
+        <div class="sign-box">
+            <div class="form-group">
+                <input type="text" class="form-control" id="username" placeholder="username">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="password" placeholder="password">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-sm btn-primary" id="submit-btn">Login</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

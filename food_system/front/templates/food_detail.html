@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+    <script src="{% static 'js/food_detail.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="post-container">
+        <h2>{{ food.name }}</h2>
+        <p class="post-info-group">
+            <span>use category：{{ food.category.name }}</span>
+            <span style="color: red;font-weight: bold">view count：{{ food.view_count }}</span>
+        </p>
+        <div class="">
+            <img src="/image/{{ food.image }}" alt="" style="width: 300px;height: 200px">
+        </div>
+
+        <div class="post-content">
+            <p>information：{{ food.content }}</p>
+        </div>
+        <div class="" style="margin-top: 20px;border: 2px solid cyan;width: 150px;border-radius: 5px;padding: 10px">
+            {% if not flag_mask %}
+                <label for="">Please rate：</label>
+                <select name="" id="input-score" class="form-control" style="width: 100px">
+                    <option value="5">5 point</option>
+                    <option value="4">4 point</option>
+                    <option value="3">3 point</option>
+                    <option value="2">2 point</option>
+                    <option value="1">1 point</option>
+                </select>
+                <button class="btn btn-danger btn-sm" id="score-btn" style="margin-top: 10px" food-id="{{ food.id }}">
+                    Submit mark
+                </button>
+            {% else %}
+                <label for="">you mark：{{ flag_mask.score }}</label>
+            {% endif %}
+        </div>
+        <div class="" style="margin-bottom: 40px">
+            <button class="btn btn-sm btn-danger pull-right " id="add-like-btn" food-id="{{ food.id }}"
+                    style="margin-left: 30px;">Add like
+            </button>
+        </div>
+    </div>
+    <div class="comment-group">
+        <h3>Comment list</h3>
+        <ul class="comment-list-group">
+            {% for comment in comments %}
+                <li>
+                    <div class="comment-content">
+                        <p class="author-info">
+                            <span>{{ comment.user.username }}</span>
+                            <span>{{ comment.create_time }}</span>
+                        </p>
+                        <p class="comment-txt">
+                            {{ comment.content }}
+                        </p>
+                    </div>
+                </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+    <div class="add-comment-group">
+        <h3>Add comment</h3>
+        <textarea name="comment" id="comment-textarea" style="width: 100%; resize:vertical;"></textarea>
+        <div class="comment-btn-group">
+            <button class="btn btn-primary" id="add-comment-btn" food-id="{{ food.id }}">Add comment
+            </button>
+        </div>
+    </div>
+
+{% endblock %}
